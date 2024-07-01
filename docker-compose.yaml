@@ -119,7 +119,6 @@ services:
       traefik.http.routers.redirs.middlewares: redirect-to-https
       traefik.http.routers.redirs.rule: hostregexp(`{host:.+}`)
     ports:
-      - 80:80/tcp
       - 993:993/tcp
       - 995:995/tcp
       - 465:465/tcp
