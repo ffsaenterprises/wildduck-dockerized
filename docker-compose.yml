@@ -15,7 +15,7 @@ services:
       - mongo
       - redis
     volumes:
-      - ./config/wildduck:/wildduck/config
+      - ~/config/wildduck:/wildduck/config
     labels:
       traefik.enable: true
       traefik.tcp.routers.wildduck-imaps.entrypoints: imaps
@@ -39,7 +39,7 @@ services:
       - redis
       - wildduck
     volumes:
-      - ./config/wildduck-webmail:/app/config
+      - ~/config/wildduck-webmail:/app/config
     labels:
       traefik.enable: true
       traefik.http.routers.wildduck-webmail.entrypoints: https
@@ -56,7 +56,7 @@ services:
       - mongo
       - redis
     volumes:
-      - ./config/zone-mta:/app/config
+      - ~/config/zone-mta:/app/config
     labels:
       traefik.enable: true
       traefik.tcp.routers.zonemta.entrypoints: smtps
@@ -74,7 +74,7 @@ services:
       - redis
       - rspamd
     volumes:
-      - ./config/haraka:/app/config
+      - ~/config/haraka:/app/config
 
   rspamd:
     image: nodemailer/rspamd
@@ -82,9 +82,9 @@ services:
     depends_on:
       - redis
     volumes:
-      - ./config/rspamd/override.d:/etc/rspamd/override.d
-      - ./config/rspamd/worker-normal.conf:/etc/rspamd/worker-normal.conf
-      - ./config/rspamd/local.d:/etc/rspamd/local.d
+      - ~/config/rspamd/override.d:/etc/rspamd/override.d
+      - ~/config/rspamd/worker-normal.conf:/etc/rspamd/worker-normal.conf
+      - ~/config/rspamd/local.d:/etc/rspamd/local.d
 
   mongo:
     image: mongo
